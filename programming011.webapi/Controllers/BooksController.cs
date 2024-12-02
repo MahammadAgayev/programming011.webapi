@@ -68,6 +68,7 @@ namespace programming011.webapi.Controllers
             Book b = BookMapper.MapBook(model);
 
             b.Id = _books.Count() + 1;
+
             _books.Add(b);
 
             return StatusCode(201);

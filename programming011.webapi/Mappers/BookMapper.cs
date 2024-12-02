@@ -1,4 +1,5 @@
 ﻿using programming011.webapi.Entitites;
+using programming011.webapi.Exceptions;
 using programming011.webapi.Models;
 
 namespace programming011.webapi.Mappers
@@ -18,6 +19,13 @@ namespace programming011.webapi.Mappers
 
         public static Book MapBook(BookModel model)
         {
+            //
+            //
+            //
+            //
+
+            throw new AppException("some data is wrong");
+
             return new Book
             {
                 Id = model.Id,
