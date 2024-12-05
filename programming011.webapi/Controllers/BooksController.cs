@@ -13,6 +13,12 @@ namespace programming011.webapi.Controllers
     [Route("[controller]")]
     public class BooksController : ControllerBase
     {
+        private readonly ILogger<BooksController> _logger;
+        public BooksController(ILogger<BooksController> logger)
+        {
+            _logger = logger;
+        }
+
         private static List<Book> _books = new List<Book>()
         {
             new Book
@@ -41,8 +47,20 @@ namespace programming011.webapi.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            List<BookModel> bookModels = _books.Select(BookMapper.MapModel)
-                .ToList();
+            // Log levels:
+            // Trace
+            // Debug
+            // Info
+            // Warning
+            // Error
+            // Critical Error (FATAL)
+
+            _logger.LogTrace("I'M TRACE LOG");
+            _logger.LogInformation("I'M INFO LOG");
+            _logger.LogError("I'M ERROR LOG");
+            _logger.LogCritical("I'M FATAL LOG");
+
+            var bookModels = _books.Select(BookMapper.MapModel).ToList();
 
             return Ok(bookModels);
         }
